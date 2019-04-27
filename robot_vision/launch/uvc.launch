@@ -1,0 +1,17 @@
+ <launch>
+<group ns="stereo">
+  <node pkg="uvc_camera" type="uvc_stereo_node" name="uvc_camera_stereo">
+    <param name="width" type="int" value="640" />
+    <param name="height" type="int" value="480" />
+    <param name="fps" type="int" value="5" />
+    <param name="frame_id" type="string" value="/stereo_frame" />
+    <param name="left/device" type="string" value="/dev/video1" />
+    <param name="right/device" type="string" value="/dev/video2" />
+    <param name="left/camera_info_url" type="string" value="file://$(find uvc_camera)/left_camera.yaml" />
+    <param name="right/camera_info_url" type="string" value="file://$(find uvc_camera)/right_camera.yaml" />
+  </node>
+  <!--node pkg="stereo_image_proc" type="stereo_image_proc" name="pabi_stereo_proc"/-->
+  <node pkg="image_view" type="image_view" name="viewer_right" />
+    <remap from="image" to="stereo/right/image_raw"/>
+</group>
+</launch>
