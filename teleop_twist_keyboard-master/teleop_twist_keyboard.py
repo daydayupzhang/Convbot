@@ -44,8 +44,11 @@ moveBindings = {
         ',':(0,0,0,-1,0,0),
         'u':(0,0,0,0,1,0),
         'm':(0,0,0,0,-1,0),
-        'k':(0,0,0,0,0,1),
-        'K':(0,0,0,0,0,-1),
+    }
+
+graspBindings={
+        'k':(1,1),
+        'K':(-1,-1),
     }
 
 speedBindings={
@@ -94,7 +97,13 @@ if __name__=="__main__":
                 x = moveBindings[key][2]
                 y = moveBindings[key][3]
                 z = moveBindings[key][4]
-                grp = moveBindings[key][5]
+            elif key in graspBindings.keys():
+                grp = graspBindings[key][0]
+                fwd = 0
+                th = 0
+                x = 0
+                y = 0
+                z = 0
             elif key in speedBindings.keys():
                 speed = speed * speedBindings[key][0]
                 turn = turn * speedBindings[key][1]
