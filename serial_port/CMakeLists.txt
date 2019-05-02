@@ -203,6 +203,7 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(serial_port src/serial_port.cpp)
+add_executable(serial_port
+  src/serial_port.cpp)
 add_dependencies(serial_port ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(serial_port ${catkin_LIBRARIES})
